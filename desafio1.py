@@ -1,5 +1,15 @@
 # Desafio 1
+# Dada uma *URL*, desenvolva um programa que indique se a URL
+# é válida ou não e, caso seja válida, retorne as suas partes constituintes.
+# Criado em 24/01/2020
+# Autor: Leonardo Ferreira de Brito <leonardo.brito@g.globo>
 import re
+
+def main():
+    url=str(input('Iforme uma URL: ')).strip()
+    u = Url(url)
+    print(u.validateurl())
+    u.show_url_decodded()
 
 class Url:
     def __init__(self, url, protocol=None, host=None, domain=None, \
@@ -18,16 +28,15 @@ class Url:
         if not test_url:
             return f'URL inválida!'
         else:
-            return True
+            return f'URL válida!'
             
 
     def split_url(self):
-        urlsplited = re.split('://|[:./@]',self.url)
+        urlsplited = re.split('://|[: /@]',self.url)
         return urlsplited
 
     def proccess_properties(self):
         properties = {
-                        'url':self.url,
                         'protocol':'',
                         'host':'',
                         'domain':'',
@@ -36,34 +45,26 @@ class Url:
                         'user' :'',
                         'password':''
                      }
-        if self.validateurl() == True:
+        if self.validateurl() == 'URL válida!':
             # Processando alguns atributos da classe dependendo se existe ou não http na URL
-            properties['protocol'] = self.split_url()[0]
-            if 'http' in self.url:
-                properties['host'] = self.split_url()[1]
-                domain = re.split('\.', self.url, 1)[1]
-                domain = re.split('/', domain)[0]
-                properties['domain'] = domain
-                pattern = re.compile(r'/\w+/')
-                path = pattern.findall(self.url)
-                if len(path) > 0:
-                    path = path[0].replace('/','')
-                    properties['path'] = path
-            else:
-                pattern = re.compile(r'@.*')
-                domain = pattern.findall(self.url)[0].split('/')[0]
-                domain = domain.replace('@','')
-                properties['domain'] = domain
-            # Processando alguns atributos da classe sem depender se existe ou não http na URL
-            for s in self.split_url():
-                if '=' in s:
-                    parameters = s
+            url_splitted = self.split_url()
+            properties['protocol'] = url_splitted[0]
+            for item in url_splitted:
+                if '.' in item and 'http' in self.url:
+                    properties['host'] = url_splitted[1].split('.')[0]
+                    properties['domain'] = url_splitted[1].replace(properties["host"]+'.','')
+                elif '.' in item:
+                    properties['domain'] = item
+                elif '=' in item:
+                    parameters = item
                     properties['parameters'] = parameters
-                elif '%' in s:
-                    user = s.split('%')[0]
+                elif '%' in item:
+                    user = item.split('%')[0]
                     properties['user'] = user
-                    password = s.split('%')[1]
+                    password = item.split('%')[1]
                     properties['password'] = password
+                elif url_splitted[0] not in item:
+                    properties['path'] = item
         return properties
 
     def show_url_decodded(self):
@@ -134,70 +135,5 @@ class Url:
         value = self.proccess_properties()['password']
         self._password = value
 
-
-#url=str(input('Iforme uma URL: ')).strip()
-url="https://www.globo.com/path/nada/"
-u = Url(url)
-print(u.validateurl())
-print(u.split_url())
-print(u.show_url_decodded())
-#print(f'Protocolo : {u.protocol}')
-#print(f'Host : {u.host}')
-#print(f'Domínio : {u.domain}')
-#print(f'Path ; {u.path}')
-#print(f'Parametros : {u.parameters}')
-#print(f'Usuário : {u.user}')
-#print(f'Senha : {u.password}')
-print('\n')
-
-url="http://globoesporte.globo.com"
-u2 = Url(url)
-print(u2.validateurl())
-print(u2.split_url())
-print(u2.show_url_decodded())
-#print(f'Protocolo : {u2.protocol}')
-#print(f'Host : {u2.host}')
-#print(f'Domínio : {u2.domain}')
-#print(f'Path ; {u2.path}')
-#print(f'Parametros : {u2.parameters}')
-#print(f'Usuário : {u2.user}')
-#print(f'Senha : {u2.password}')
-print('\n')
-
-url="http://www.google.com/mail/user=fulano"
-u3 = Url(url)
-print(u3.validateurl())
-print(u3.split_url())
-print(u3.show_url_decodded())
-#print(f'Protocolo : {u3.protocol}')
-#print(f'Host : {u3.host}')
-#print(f'Domínio : {u3.domain}')
-#print(f'Path ; {u3.path}')
-#print(f'Parametros : {u3.parameters}')
-#print(f'Usuário : {u3.user}')
-#print(f'Senha : {u3.password}')
-print('\n')
-
-url="ssh://fulano%senha@git.com/"
-u4 = Url(url)
-print(u4.validateurl())
-print(u4.split_url())
-print(u4.show_url_decodded())
-#print(f'Protocolo : {u4.protocol}')
-#print(f'Host : {u4.host}')
-#print(f'Domínio : {u4.domain}')
-#print(f'Path ; {u4.path}')
-#print(f'Parametros : {u4.parameters}')
-print(f'Usuário : {u4.user}')
-print(f'Senha : {u4.password}')
-print('\n')
-
-url="ftp://host.dominio"
-u5 = Url(url)
-print(u5.validateurl())
-print('\n')
-
-url="https://www."
-u6 = Url(url)
-print(u6.validateurl())
-print('\n')
+if __name__ == '__main__':
+    main()
