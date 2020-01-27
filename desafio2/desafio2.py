@@ -46,7 +46,7 @@ def main():
                     output += f' + {digit}²'
         result = number.sum_square_digits()
         output += f' = {result}\n'
-        if result == 4:
+        if result == 4 or result == 0:
             print(f'\nO numero {num} é triste!\n')
             break
         number = Number(result)
