@@ -1,5 +1,3 @@
-# Arquivo para testes do desafio1
-
 from desafio1 import Url
 
 url="https://www.globo.com/path"

@@ -1,12 +1,12 @@
 # Desafio 1
 # Dada uma *URL*, desenvolva um programa que indique se a URL
 # é válida ou não e, caso seja válida, retorne as suas partes constituintes.
-# Criado em 24/01/2020
+# Criado em 23/01/2020
 # Autor: Leonardo Ferreira de Brito <leonardo.brito@g.globo>
 import re
 
 def main():
-    url=str(input('Iforme uma URL: ')).strip()
+    url = str(input('Informe uma URL: ')).strip()
     u = Url(url)
     print(u.validateurl())
     u.show_url_decodded()
