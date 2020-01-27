@@ -8,7 +8,7 @@ import re
 def main():
     url = str(input('Informe uma URL: ')).strip()
     u = Url(url)
-    print(u.validateurl())
+    print(f'\n{u.validateurl()}\n')
     u.show_url_decodded()
 
 class Url:
@@ -70,7 +70,8 @@ class Url:
     def show_url_decodded(self):
         for k,v in self.proccess_properties().items():
             if v != '' and v != None:
-                print(f'{k.capitalize()}: {v}')
+                print(f' - {k.capitalize()}: {v}')
+        print(f'\n')
 
     @property
     def protocol(self):
