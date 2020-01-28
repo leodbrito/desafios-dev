@@ -8,7 +8,7 @@ import re
 def main():
     url = str(input('Informe uma URL: ')).strip()
     u = Url(url)
-    print(f'\n{u.validateurl()}\n')
+    print(f'\n{u.validate_url()}\n')
     u.show_url_decodded()
 
 class Url:
@@ -23,7 +23,7 @@ class Url:
         self.user = user
         self.password = password
 
-    def validateurl(self):
+    def validate_url(self):
         test_url = re.findall(r'^(http[s]?://\w+\.\w+\.?\w*|ssh://\w+%.+@\w+\.\w+)',self.url)
         if not test_url:
             return f'URL inválida!'
@@ -35,6 +35,7 @@ class Url:
         urlsplited = re.split('://|[: /@]',self.url)
         return urlsplited
 
+    # método para gerar um dicionário com os atributos da classe
     def proccess_properties(self):
         properties = {
                         'protocol':'',
@@ -45,7 +46,7 @@ class Url:
                         'user' :'',
                         'password':''
                      }
-        if self.validateurl() == 'URL válida!':
+        if self.validate_url() == 'URL válida!':
             # Processando alguns atributos da classe dependendo se existe ou não http na URL
             url_splitted = self.split_url()
             properties['protocol'] = url_splitted[0]

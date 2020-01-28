@@ -34,13 +34,14 @@ def main():
     while result != 1:
         total_digits = number.total_digits
         digit_list = number.convert_digit_list()
+        index_last_digit = len(digit_list)-1
         for digit in digit_list:
             if total_digits == 1:
                 output += f' - {digit}²'
             else:
                 if digit_list.index(digit) == 0:
                     output += f' - {digit}²'
-                elif digit_list.index(digit) == digit_list[len(digit_list)-1]:
+                elif digit_list.index(digit) == digit_list[index_last_digit]:
                     output += f' + {digit}² ='
                 else:
                     output += f' + {digit}²'
