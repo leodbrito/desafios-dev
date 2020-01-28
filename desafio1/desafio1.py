@@ -1,4 +1,4 @@
-# Desafio 1
+# Desafio 1 - Decode URL
 # Dada uma *URL*, desenvolva um programa que indique se a URL
 # é válida ou não e, caso seja válida, retorne as suas partes constituintes.
 # Criado em 23/01/2020
