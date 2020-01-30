@@ -25,10 +25,19 @@
 # Autor: Leonardo Ferreira de Brito <leonardo.brito@g.globo>
 
 def main():
-    change = Change(0.85,100)
-    change.show_change()
-    print(f'\n')
-    change = Change(0.85,50)
+    cost = ''
+    while type(cost) != float:
+        cost = input('Informe o valor a ser pago: ')
+        cost = float(cost.replace(',', '.'))
+        if type(cost) != float:
+            print('Digito inválido, tente novamente!')
+    amount_payed = ''
+    while type(amount_payed) != float:
+        amount_payed = input('Informe o valor efetivamente pago: ')
+        amount_payed = float(amount_payed.replace(',', '.'))
+        if type(amount_payed) != float:
+            print('Digito inválido, tente novamente!')
+    change = Change(cost, amount_payed)
     change.show_change()
     
 class Change:
@@ -48,8 +57,9 @@ class Change:
                  \r2. Valor efetivamente pago: R$ {amount_payed:.2f}
                  \r3. Troco: R$ {change:.2f}\n'''
         values_list = []
+        values_dict = {}
         if self.change != 0:
-            # definindo uma lista de valores de troco (cédulas e moedas)
+            # definindo uma lista de valores de dinheiro (cédulas e moedas)
             while change > 0:
                 for value in self.money:
                     if value <= change:
@@ -58,15 +68,14 @@ class Change:
                         change = round(change, 2)
                         break
             i = 1
-            # Agrupando a lista de valores de troco (cédulas e moedas) em um dicionário
-            values_dict = {}
+            # Agrupando a lista de valores de dinheiro (cédulas e moedas) em um dicionário
             for value in values_list:
                 if value == values_list[0]:
                     if value in values_dict.keys():
                         values_dict[value] += 1
                     else:
                         values_dict[value] = 1
-                elif i < len(values_list) and value == values_list[i-1]:
+                elif value == values_list[i-1]:
                     if value in values_dict.keys():
                         values_dict[value] += 1
                     else:
@@ -74,10 +83,12 @@ class Change:
                 else:
                     values_dict[value] = 1
                 i += 1
-            # formatando a saída stdout
+                if i > len(values_list):
+                    break
+            # Formatando a saída stdout
             for k,v in values_dict.items():
                 output += f'- {v} x R$ {k:.2f}\n'
-        print(f'\n{values_list}\n{output}')
+        print(f'{output}')
 
     @property
     def change(self):

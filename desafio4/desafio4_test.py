@@ -9,3 +9,6 @@ change.show_change()
 
 change = Change(40,40)
 change.show_change()
+
+change = Change(0.05,100)
+change.show_change()
