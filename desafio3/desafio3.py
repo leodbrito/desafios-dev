@@ -4,8 +4,8 @@
 # 
 # **Exemplo**:
 # 
-#  - Entrada: 100, 101, 102, 103, 104, 105, 110, 111, 113, 114, 115, 150
-#  - Saída: [100-105], [110-111], [113-115], [150]
+# > - Entrada: 100, 101, 102, 103, 104, 105, 110, 111, 113, 114, 115, 150
+# > - Saída: [100-105], [110-111], [113-115], [150]
 # 
 # Criado em 27/01/2020
 # Autor: Leonardo Ferreira de Brito <leonardo.brito@g.globo>
@@ -28,6 +28,7 @@ class NumbersList:
         false_list = []
         work_list = []
         for number in numbers_list:
+            # testa se é diferente de vazio + valor diferente de numérico
             if number != '' and number.strip().isnumeric() == False:
                 false_list.append(False)
             elif number != '':
@@ -41,12 +42,15 @@ class NumbersList:
     def group_numbers_list(self):
         if self.validate() != False:
             work_list = self.validate()
+            # variáveis para serem usadas como índce
             wl_i = 0
             nl_i = 0
             groupped_list = []
             for number in work_list:
+                # testa se o número é o primeiro da lista
                 if number == work_list[0]:
                     groupped_list.append([number])
+                # testa se o número atual é igual ao anterior
                 elif number - 1 == work_list[wl_i-1]:
                     groupped_list[nl_i].append(number)
                 else:

@@ -1,4 +1,4 @@
-# Arquivo para testes do desafio1
+# Arquivo para testes do desafio2
 from desafio2 import Number
 
 num = 0

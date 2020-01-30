@@ -1,8 +1,10 @@
+# Arquivo para testes do desafio1
+
 from desafio1 import Url
 
 url="https://www.globo.com/path"
 u = Url(url)
-print(u.validateurl())
+print(u.validate_url())
 print(u.split_url())
 u.show_url_decodded()
 #print(f'Protocolo : {u.protocol}')
@@ -16,7 +18,7 @@ print('\n')
 
 url="http://globoesporte.globo.com"
 u2 = Url(url)
-print(u2.validateurl())
+print(u2.validate_url())
 print(u2.split_url())
 u2.show_url_decodded()
 #print(f'Protocolo : {u2.protocol}')
@@ -30,7 +32,7 @@ print('\n')
 
 url="http://www.google.com/mail/user=fulano"
 u3 = Url(url)
-print(u3.validateurl())
+print(u3.validate_url())
 print(u3.split_url())
 u3.show_url_decodded()
 #print(f'Protocolo : {u3.protocol}')
@@ -44,7 +46,7 @@ print('\n')
 
 url="ssh://fulano%senha@git.com/"
 u4 = Url(url)
-print(u4.validateurl())
+print(u4.validate_url())
 print(u4.split_url())
 u4.show_url_decodded()
 #print(f'Protocolo : {u4.protocol}')
@@ -56,10 +58,10 @@ print('\n')
 
 url="ftp://host.dominio"
 u5 = Url(url)
-print(u5.validateurl())
+print(u5.validate_url())
 print('\n')
 
 url="https://www."
 u6 = Url(url)
-print(u6.validateurl())
+print(u6.validate_url())
 print('\n')
