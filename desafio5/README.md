@@ -29,25 +29,25 @@ A rota "/" faz a integração com a API Random Profile e retorna um perfil rand�
 
 Field name (\* for required) | Description
 ----------------------------|--------------
-format                      | The format in which you want the results to be returned. We currently support these options: \
-                            | * xml \
-                            | * csv \
-                            | * json \
-                            | xml is chosen by default
-countries *                 | A list of ISO 3 codes separated by a comma. Example: CHN,JPN. We currently support the following country codes: \
-                            | * CHN \
-                            | * GBR \
-                            | * JPN \
-                            | * KOR
-packages                    | A list of package IDs separates by comma. The following packages are currently available: \
-                            | * General (name, address, phone, date of birth etc.) \
-                            | * Financial (bank account, credit card details, income etc.) \
-                            | * Physical (height, weight, clothes size etc.) \
-                            | By default the General package is selected.
+format                      | The format in which you want the results to be returned. We currently support these options:
+                             * xml
+                             * csv
+                             * json
+                             xml is chosen by default
+countries *                 | A list of ISO 3 codes separated by a comma. Example: CHN,JPN. We currently support the following country codes:
+                             * CHN
+                             * GBR
+                             * JPN
+                             * KOR
+packages                    | A list of package IDs separates by comma. The following packages are currently available:
+                             * General (name, address, phone, date of birth etc.)
+                             * Financial (bank account, credit card details, income etc.)
+                             * Physical (height, weight, clothes size etc.)
+                             By default the General package is selected.
 fromAge                     | The minimum age in years for a profile. From 0 to 100. The default value is 0.
 toAge                       | The maximum age in years for a profile. From 0 to 100. The default value is 100.
-fullChildren                | 1 or 0 \
-                            | This is a flag that determines whether profiles with age under 18 years old can be assigned an occupation other than "Child" and bank details, such as randomly generated bank account number or credit card number.
+fullChildren                | 1 or 0
+                             This is a flag that determines whether profiles with age under 18 years old can be assigned an occupation other than "Child" and bank details, such as randomly generated bank account number or credit card number.
 
 
 # Setup:
