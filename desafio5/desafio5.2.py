@@ -13,11 +13,11 @@ import requests
 
 app = Flask(__name__)
 
-@app.route('/options')
-def options():
+@app.route('/')
+def api():
     endpoint = 'https://randomprofile.com/api/api.php'
-    output_request = requests.get(endpoint, params = request.args.to_dict())
-    return f'{output_request.text}'
+    response = requests.get(endpoint, params = request.args.to_dict())
+    return response.text
 
 if __name__ == '__main__':
     app.run(debug=True)
