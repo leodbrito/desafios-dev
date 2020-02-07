@@ -12,13 +12,13 @@ Efetue o "clone" do projeto:
 - `git clone https://github.com/leodbrito/desafios-dev.git`
 
 ## Configure e Inicie o Virtualenv
-Defina a versão do Python clolocando o PATH de instalação do binário no parâmetro "--python", conforme exemplo abaixo:
-- `virtualenv --python=/opt/python-3.6/bin/python NOME_DO_AMBIENTE`
+Para configurar o Virtualenv defina a versão do Python, clolocando o PATH de instalação do seu binário no parâmetro "--python", conforme exemplo(Linux) abaixo:
+- `virtualenv --python=/usr/bin/python3.6 NOME_DO_AMBIENTE`
 
 Inicie o ambiente na raíz do projeto, pois servirá para todos os desafios:
-- `virtualenv NOME_DO_AMBIENTE\bin\activate` ou `.NOME_DO_AMBIENTE\bin\activate`
+- `virtualenv NOME_DO_AMBIENTE\bin\activate` ou `. NOME_DO_AMBIENTE\bin\activate`
 
 Para desligar o ambiente:
 - `deactivate`
 
-Para cada desafio entre em seu diretório e siga as intru''cões do arquivo "README"
+Para cada desafio entre em seu diretório e siga as intruções do arquivo "README".
