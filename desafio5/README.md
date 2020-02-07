@@ -36,6 +36,8 @@ fromAge                         | The minimum age in years for a profile. From 0
 toAge                           | The maximum age in years for a profile. From 0 to 100. The default value is 100.
 fullChildren                    | 1 or 0   This is a flag that determines whether profiles with age under 18 years old can be assigned an occupation other than "Child" and bank details, such as randomly generated bank account number or credit card number.
 
+Para utilização basta, após o barra, inserir o parâmetro obrigatório **"countries"** conforme exemplo abaixo:
+- `curl 'http://localhost:5000/?countries=GBR&format=json'`
 
 # Setup:
 
